@@ -1,33 +1,37 @@
-# Gradle files
-.gradle/
-build/
+import requests
 
-# Local configuration file (sdk path, etc)
-local.properties
+# Set up login credentials
+username = 'your_instagram_username'
+password = 'your_instagram_password'
 
-# Log/OS Files
-*.log
+# Set up Instagram login URL
+login_url = 'https://www.instagram.com/accounts/login/'
 
-# Android Studio generated files and folders
-captures/
-.externalNativeBuild/
-.cxx/
-*.apk
-output.json
+# Set up session object
+session = requests.Session()
 
-# IntelliJ
-*.iml
-.idea/
-misc.xml
-deploymentTargetDropDown.xml
-render.experimental.xml
+# Send a GET request to the login page to retrieve cookies
+login_page_response = session.get(login_url)
+csrf_token = login_page_response.cookies['csrftoken']
 
-# Keystore files
-*.jks
-*.keystore
+# Set up login payload
+login_payload = {
+    'username': username,
+    'password': password,
+    'csrfmiddlewaretoken': csrf_token,
+}
 
-# Google Services (e.g. APIs or Firebase)
-google-services.json
+# Send a POST request to the login endpoint with the login payload
+login_response = session.post(login_url, data=login_payload, headers={
+    'Referer': 'https://www.instagram.com/',
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36',
+    'X-Instagram-AJAX': '1',
+    'X-Requested-With': 'XMLHttpRequest',
+    'X-CSRFToken': csrf_token,
+})
 
-# Android Profiling
-*.hprof
+# Check if the login was successful
+if login_response.status_code == 200 and 'logged_in_user' in login_response.text:
+    print('Login successful')
+else:
+    print('Login failed')
