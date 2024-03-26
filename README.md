@@ -15,7 +15,7 @@ apt install git
 
 # After that, we run the link containing the cloned Instaboot in Termux
 
-git clone https://github.com/instabot-py/instabot.git
+git clone https://github.com/instagramcode-py/instagramcode.git
 
 # For initial execution:
 
