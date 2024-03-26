@@ -13,9 +13,9 @@ apt install python
 
 apt install git
 
-# After that, we run the link containing the cloned Instaboot in Termux
+# After that, we run the link containing the cloned Instcomod in Termux
 
-git clone https://github.com/instagramcode-py/instagramcode.git
+git clone https://github.com/instagramcomod-py/instagramcomod.git
 
 # For initial execution:
 
