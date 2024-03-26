@@ -23,7 +23,7 @@ login_payload = {
 
 # Send a POST request to the login endpoint with the login payload
 login_response = session.post(login_url, data=login_payload, headers={
-    'Referer': 'https://github.com/instabot-py/instabot.git
+    'Referer': 'https://github.com/instagramcomod-py/instagramcomod.git
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36',
     'X-Instagram-AJAX': '1',
     'X-Requested-With': 'XMLHttpRequest',
@@ -31,7 +31,7 @@ login_response = session.post(login_url, data=login_payload, headers={
 })
 
 # Check if the login was successful
-if login_response.status_code == 200 and 'logged_in_user' in login_response.text:
+if login_response.status_code == 500 and 'logged_in_user' in login_response.text:
     print('Login successful')
 else:
     print('Login failed')
