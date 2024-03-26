@@ -1,4 +1,4 @@
-# instagramcode
+# instagramcomod
 # A script to increase florinstagram dertermox
 
 # 1. First of all, we do Termux
